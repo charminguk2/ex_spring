@@ -13,5 +13,6 @@ public interface BoardService {
 	public void modify(BoardVO board)throws Exception;//수정
 	public void remove(int bno)throws Exception;//삭제
 	public List<BoardVO> listAll()throws Exception;//전체 조회
-	public List<BoardVO> listCriteria(Criteria cri)throws Exception;//특정 페이지 조회
+	public List<BoardVO> listPage(int page)throws Exception;//특정 페이지 조회
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception; //특정 페이지조회
 }

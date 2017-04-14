@@ -12,5 +12,6 @@ public interface BoardDAO {
 	public void update(BoardVO vo)throws Exception;//게시글 수정
 	public void delete(int bno)throws Exception; //특정글 삭제
 	public List<BoardVO> listAll()throws Exception; //전체글 조회
-	public List<BoardVO> listCriteria(Criteria cri)throws Exception; //특정 페이지조회	
+	public List<BoardVO> listPage(int page) throws Exception; 	
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception; //특정 페이지조회
 }

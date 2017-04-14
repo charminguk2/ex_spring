@@ -60,7 +60,6 @@
 <!-- /.content-wrapper -->
 
 <script>
-    
     var result = '${msg}';
     
     if(result == 'SUCCESS'){

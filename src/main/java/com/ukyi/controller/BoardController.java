@@ -56,6 +56,12 @@ public class BoardController {
 	   return "board/listAll";
 	}
 	
+	@RequestMapping(value = "/listCri", method = RequestMethod.GET)//게시물 전체 목록 요청
+	public void listCri(Criteria cri, Model model)throws Exception{
+		logger.info("전체listCri 요청...");	
+		model.addAttribute("list", service.listCriteria(cri));
+	}
+	
 	@RequestMapping("/read")//특정게시물 읽기
 	public String read(int bno,Model model)throws Exception{
 	   logger.info("게시물 읽기...["+ bno +"]");

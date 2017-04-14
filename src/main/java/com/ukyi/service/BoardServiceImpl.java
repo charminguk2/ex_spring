@@ -42,6 +42,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	public List<BoardVO> listPage(int page) throws Exception {
+		return dao.listPage(page);
+	}
+
+	@Override
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
 		return dao.listCriteria(cri);
 	}

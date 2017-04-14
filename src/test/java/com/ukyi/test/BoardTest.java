@@ -1,4 +1,6 @@
-package com.ukyi.controller;
+package com.ukyi.test;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -10,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ukyi.domain.BoardVO;
+import com.ukyi.domain.Criteria;
 import com.ukyi.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,8 +24,7 @@ public class BoardTest {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardTest.class);
 	
-	
-	@Test
+	/*@Test
 	public void	testCreate() throws Exception {
 		BoardVO board = new BoardVO();
 		board.setTitle("새글제목");
@@ -48,5 +50,28 @@ public class BoardTest {
 	@Test
 	public void testDelete() throws Exception {
 		dao.delete(3);
+	}*/
+	
+	@Test
+	public void testListPage() throws Exception{
+		int page = 3;
+		List<BoardVO> list = dao.listPage(page);
+		for (BoardVO boardVO : list) {
+			logger.info(boardVO.getBno()+":"+boardVO.getTitle());
+		}
 	}
+	
+/*	@Test
+	public void testListCriteria() throws Exception{
+		
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(20);
+		
+		List<BoardVO> list = dao.listCriteria(cri);
+		
+		for (BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + ":" + boardVO.getTitle());
+		}
+	}*/
 }
