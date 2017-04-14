@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -56,7 +57,8 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
-		return session.selectList(namespace+".listCriteria", cri); 
+		 //return session.selectList("board.listAll",Object param, RowBounds);		
+        return session.selectList(namespace+".listAll",null ,new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 	}
 }
 
