@@ -60,6 +60,11 @@ public class BoardDAOImpl implements BoardDAO {
 		 //return session.selectList(namespace+".listAll",Object param, RowBounds);		
         return session.selectList(namespace+".listAll",null ,new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 	}
+
+	@Override
+	public int countPaging(Criteria cri) throws Exception {
+		return session.selectOne(namespace+".countPaging", cri);
+	}
 }
 
 

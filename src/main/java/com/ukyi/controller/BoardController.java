@@ -44,7 +44,7 @@ public class BoardController {
 		
 		//model.addAttribute("msg","SUCCESS");
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		//request.setAttribute() 또는 session.setAttribute()로 대체 가능!!
+	//request.setAttribute() 또는 session.setAttribute()로 대체 가능!!
 		
 		//return "board/success";//스프링에게 뷰정보 전달!!	
 		return "redirect:/board/listAll";//등록글 재입력 방지
@@ -52,7 +52,7 @@ public class BoardController {
 	
 	@RequestMapping("/listAll")//게시물 전체 목록 요청
 	public String listAll(Model model)throws Exception{
-		logger.info("전체list 요청..."+ model);	
+		logger.info("전체list 요청..."+ model);
 		model.addAttribute("list", service.listAll());
 	   return "board/listAll";
 	}
@@ -106,11 +106,13 @@ public class BoardController {
 		model.addAttribute("list", service.listCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(131);
+		
+		//pageMaker.setTotalCount(131);
+		
+		pageMaker.setTotalCount(service.listCountCriteria(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 	}
-	
 }
 
 

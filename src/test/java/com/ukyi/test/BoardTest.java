@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.ukyi.domain.BoardVO;
 import com.ukyi.domain.Criteria;
@@ -52,14 +54,14 @@ public class BoardTest {
 		dao.delete(3);
 	}*/
 	
-	@Test
+	/*@Test
 	public void testListPage() throws Exception{
 		int page = 3;
 		List<BoardVO> list = dao.listPage(page);
 		for (BoardVO boardVO : list) {
 			logger.info(boardVO.getBno()+":"+boardVO.getTitle());
 		}
-	}
+	}*/
 	
 /*	@Test
 	public void testListCriteria() throws Exception{
@@ -74,4 +76,14 @@ public class BoardTest {
 			logger.info(boardVO.getBno() + ":" + boardVO.getTitle());
 		}
 	}*/
+	
+	@Test
+	public void testURI() throws Exception{
+		 UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				 .path("/{module}/{page}").queryParam("bno", 12).queryParam("perPageNum", 20)
+				 .build().expand("board","read").encode();
+		 
+		 logger.info("/board/read?bno=12&perPageNum=20");
+		 logger.info(uriComponents.toString());
+	}
 }

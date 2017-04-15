@@ -15,4 +15,5 @@ public interface BoardService {
 	public List<BoardVO> listAll()throws Exception;//전체 조회
 	public List<BoardVO> listPage(int page)throws Exception;//특정 페이지 조회
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception; //특정 페이지조회
+	public int listCountCriteria(Criteria cri) throws Exception;
 }
