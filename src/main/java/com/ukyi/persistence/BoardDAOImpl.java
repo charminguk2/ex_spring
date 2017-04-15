@@ -57,7 +57,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
-		 //return session.selectList("board.listAll",Object param, RowBounds);		
+		 //return session.selectList(namespace+".listAll",Object param, RowBounds);		
         return session.selectList(namespace+".listAll",null ,new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 	}
 }
